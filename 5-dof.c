@@ -58,3 +58,35 @@ Adafruit_BMP085_Unified bmp = Adafruit_BMP085_Unified(10085);
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345); 
 
 SoftwareSerial data(9, 10); 
+
+void setup() 
+{ 
+
+Serial.begin(9600); 
+data.begin(9600); 
+Wire.begin(); 
+gyro.enableDefault(); 
+Wire.beginTransmission(address); 
+Wire.write(0x02);  
+Wire.write(0x00);
+Wire.endTransmission(); 
+
+
+pinMode(ledPin, OUTPUT); 
+pinMode(buttonPin_1, INPUT); 
+pinMode(buttonPin_2, INPUT); 
+pinMode(buttonPin_3, INPUT); 
+
+if(!bmp.begin()) 
+{ 
+Serial.print("Ooops, no BMP085 detected ... Check your wiring or I2C ADDR!"); 
+while(1); 
+} 
+if(!accel.begin()) 
+{ 
+Serial.println("Ooops, no ADXL345 detected ... Check your wiring!"); 
+while(1); 
+} 
+accel.setRange(ADXL345_RANGE_2_G); 
+accel.setDataRate(ADXL345_DATARATE_200_HZ); 
+} 
