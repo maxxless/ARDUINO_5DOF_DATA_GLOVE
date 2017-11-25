@@ -311,6 +311,69 @@ m[3] = analogRead(Pin_4);
 m[4] = analogRead(Pin_5); 
 m[5] = analogRead(Pin_6); 
 
-accel.getEvent(&event); 
+Serial.print("Compass: x: "); 
+Serial.print(x); 
+Serial.print(" y: "); 
+Serial.print(y); 
+Serial.print(" z: "); 
+Serial.println(z); 
+Serial.println("");
 
-gyro.read();  
+accel.getEvent(&event); 
+data.print(event.acceleration.x); 
+data.print(" "); 
+data.print(event.acceleration.y); 
+data.print(" "); 
+data.print(event.acceleration.z); 
+data.print(" "); 
+
+
+gyro.read(); 
+data.print(((int)gyro.g.x)/100); 
+data.print(" "); 
+data.print(((int)gyro.g.y)/100); 
+data.print(" "); 
+data.print(((int)gyro.g.z)/100); 
+data.print(" "); 
+
+if((m[1]<120) )
+{ 
+data.println(1); 
+delay(50); 
+} 
+
+if( (m[2]<140)) 
+{ 
+data.println(3); 
+delay(50); 
+} 
+
+if( (m[1]>150)&& (m[2]>150) )
+{ 
+data.println(2); 
+delay(50); 
+} 
+
+if(m[3]<170) 
+{ 
+data.println(4); 
+delay(50); 
+} 
+
+data.print(" "); 
+data.print(m[3]); 
+data.print(" "); 
+data.print(m[2]); 
+data.print(" "); 
+data.print(m[1]); 
+data.print(" "); 
+data.print(m[4]); 
+data.println(" "); 
+data.print(m[5]); 
+data.println(" "); 
+
+Serial.print("Time :"); 
+Serial.print(float(dt)/1000); 
+Serial.println('\n'); 
+delay(100); 
+}
