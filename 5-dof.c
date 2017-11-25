@@ -119,3 +119,96 @@ else if ((buttonState_1 == LOW) && (buttonState_2 == LOW) && (buttonState_3 == L
 { 
 digitalWrite(ledPin, LOW); 
 } 
+}
+
+switch(state) { 
+case 3:  
+{ 
+if( (m[1] <135) && (m[2] >180) && (m[4] >180) ) 
+{ 
+data.println(1); 
+Serial.println(1); 
+delay(50); 
+} 
+
+if( (m[2] <= 130) ) 
+{ 
+data.println(3); 
+delay(50); 
+} 
+
+if( (m[1] > 180 ) && (m[2] > 160) ) 
+{ 
+data.println(2); 
+delay(50); 
+} 
+
+if( (m[4]<140)) 
+{ 
+data.println(4); 
+delay(50); 
+} 
+
+if( (m[4]<140) && (m[1]<140) ) 
+{ 
+data.println(5); 
+Serial.println(5); 
+delay(50); 
+} 
+break; 
+} 
+
+case 2 :  
+{
+if( (m[4] <= 140) ) 
+{ 
+data.println(6); 
+delay(50); 
+} 
+
+if( (m[1] <= 130) ) 
+{ 
+data.println(7); 
+delay(50); 
+} 
+
+if( (m[2] <= 145) ) 
+{ 
+data.println(8); 
+delay(50); 
+} 
+break; 
+} 
+
+case 1 : 
+{ 
+if( (m[1] <140)) 
+{ 
+data.println(9); 
+Serial.println(9); 
+delay(50); 
+} 
+
+if( (m[4] <= 140) ) 
+{ 
+data.println(10); 
+Serial.println(10); 
+delay(50); 
+}
+
+if( (m[2] <= 140) ) 
+{ 
+data.println(11); 
+Serial.println(11); 
+delay(50); 
+} 
+
+if( (m[3]<=140 ) ) 
+{ 
+data.println(12); 
+Serial.println(12); 
+delay(50); 
+} 
+break; 
+} 
+} 
