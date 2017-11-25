@@ -90,3 +90,32 @@ while(1);
 accel.setRange(ADXL345_RANGE_2_G); 
 accel.setDataRate(ADXL345_DATARATE_200_HZ); 
 } 
+
+void loop() 
+{ 
+buttonState_1 = digitalRead(buttonPin_1); 
+buttonState_2 = digitalRead(buttonPin_2); 
+buttonState_3 = digitalRead(buttonPin_3); 
+
+if ((buttonState_1 == HIGH)) 
+{ 
+state=1; 
+digitalWrite(ledPin, HIGH); 
+} 
+
+else if ((buttonState_2 == HIGH)) 
+{ 
+state=2; 
+digitalWrite(ledPin, HIGH); 
+} 
+
+else if ((buttonState_3 == HIGH)) 
+{ 
+state=3; 
+digitalWrite(ledPin, HIGH); 
+} 
+
+else if ((buttonState_1 == LOW) && (buttonState_2 == LOW) && (buttonState_3 == LOW) ) 
+{ 
+digitalWrite(ledPin, LOW); 
+} 
