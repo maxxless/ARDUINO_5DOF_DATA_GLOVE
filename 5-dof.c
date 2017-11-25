@@ -265,8 +265,21 @@ delay(25);
 pressure10 = event.pressure; 
 
 pressure = ( pressure1 + pressure2 + pressure3 + pressure4 ) / 4; 
+ Serial.print("Pressure: "); 
+ Serial.print(pressure); 
+ Serial.println(" hPa"); 
+
+bmp.getTemperature(&temperature); 
+ Serial.print("Temperature: "); 
+ Serial.print(temperature); 
+ Serial.println(" C"); 
  
 float seaLevelPressure = ground_level; 
+ Serial.print("Altitude: "); 
+ Serial.print(bmp.pressureToAltitude(seaLevelPressure, 
+ event.pressure, 
+ temperature)); 
+Serial.println("m"); 
 } 
 else 
 { 
