@@ -285,3 +285,32 @@ else
 { 
 Serial.println("Sensor error"); 
 } 
+
+Wire.beginTransmission(address); 
+Wire.write(0x03); 
+Wire.endTransmission(); 
+
+Wire.requestFrom(address, 6); 
+if(6<=Wire.available()){ 
+x = Wire.read()«8;  
+x |= Wire.read();  
+z = Wire.read()«8; 
+z |= Wire.read(); 
+y = Wire.read()«8;  
+y |= Wire.read(); 
+} 
+
+titi=millis(); 
+dt=titi-toto; 
+toto=titi; 
+
+m[0] = analogRead(Pin_1); 
+m[1] = analogRead(Pin_2); 
+m[2] = analogRead(Pin_3); 
+m[3] = analogRead(Pin_4); 
+m[4] = analogRead(Pin_5); 
+m[5] = analogRead(Pin_6); 
+
+accel.getEvent(&event); 
+
+gyro.read();  
