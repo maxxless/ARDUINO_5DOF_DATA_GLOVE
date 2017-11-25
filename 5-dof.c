@@ -212,3 +212,63 @@ delay(50);
 break; 
 } 
 } 
+
+sensors_event_t event; 
+bmp.getEvent(&event); 
+
+if (ground_level<10) 
+{ 
+delay(25); 
+ground_level1 = event.pressure; 
+delay(25); 
+ground_level2 = event.pressure; 
+delay(25); 
+ground_level3 = event.pressure; 
+delay(25); 
+ground_level4 = event.pressure; 
+delay(25); 
+ground_level5 = event.pressure; 
+delay(25); 
+ground_level6 = event.pressure; 
+delay(25); 
+ground_level7 = event.pressure; 
+delay(25); 
+ground_level8 = event.pressure; 
+delay(25); 
+ground_level9 = event.pressure; 
+delay(25); 
+ground_level10 = event.pressure; 
+ground_level = (ground_level1 + ground_level2 + ground_level3 + ground_level4) / 4; 
+} 
+
+
+if (event.pressure) 
+{ 
+pressure1 = event.pressure; 
+delay(25); 
+pressure2 = event.pressure; 
+delay(25); 
+pressure3 = event.pressure; 
+delay(25); 
+pressure4 = event.pressure; 
+delay(25); 
+pressure5 = event.pressure; 
+delay(25); 
+pressure6 = event.pressure; 
+delay(25); 
+pressure7 = event.pressure; 
+delay(25); 
+pressure8 = event.pressure; 
+delay(25); 
+pressure9 = event.pressure; 
+delay(25); 
+pressure10 = event.pressure; 
+
+pressure = ( pressure1 + pressure2 + pressure3 + pressure4 ) / 4; 
+ 
+float seaLevelPressure = ground_level; 
+} 
+else 
+{ 
+Serial.println("Sensor error"); 
+} 
